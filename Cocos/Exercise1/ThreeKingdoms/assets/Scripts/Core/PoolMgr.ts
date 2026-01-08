@@ -1,9 +1,10 @@
 import { _decorator, Component, instantiate, Node, NodePool, Prefab } from 'cc';
+import { Singleton } from './Singleton';
 const { ccclass, property } = _decorator;
 
 /** 全局通用对象缓存池 */
 @ccclass('PoolMgr')
-export class PoolMgr extends Component {
+export class PoolMgr extends Singleton {
     private _pools: Map<string, NodePool> = new Map();
 
     /** 获取对象 */
