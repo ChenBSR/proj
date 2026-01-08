@@ -1,0 +1,75 @@
+Git 的命令非常多，但日常工作中 80% 的时间只需要用到其中的 10-20 个。为了方便理解，我将这些常用命令按功能场景进行了分类：
+
+### 1. 基础设置（第一次安装后执行）
+```bash
+git config --global user.name "你的名字"      # 设置用户名
+git config --global user.email "你的邮箱"     # 设置邮箱
+git config --list                            # 查看当前配置
+```
+
+### 2. 建立仓库
+```bash
+git init                    # 在当前目录新建一个本地代码库
+git clone [url]             # 下载（克隆）一个远程项目
+```
+
+### 3. 日常操作（最常用）
+这是最核心的工作流：**修改代码 -> 暂存 -> 提交**。
+```bash
+git status                  # 查看当前工作区的状态（哪些文件改了、没加进暂存区）
+git add [file]              # 将指定文件添加到暂存区
+git add .                   # 将当前目录所有修改过的文件都添加到暂存区
+git commit -m "提交说明"     # 将暂存区的内容提交到本地仓库
+```
+
+### 4. 分支管理
+分支是 Git 的灵魂，建议在开发新功能时都新建分支。
+```bash
+git branch                  # 列出所有本地分支
+git branch [branch-name]    # 新建分支，但仍留在当前分支
+git checkout [branch-name]  # 切换到指定分支
+git checkout -b [name]      # 新建并切换到该分支（最常用）
+git merge [branch]          # 将指定分支合并到当前分支
+git branch -d [name]        # 删除本地分支
+```
+*注：现代 Git 推荐使用 `git switch [name]` 来切换分支。*
+
+### 5. 远程同步
+当你需要和 GitHub/GitLab 交互时：
+```bash
+git remote -v               # 查看远程仓库信息
+git fetch                   # 下载远程仓库的所有变动（不合并）
+git pull                    # 取回远程仓库的变化，并与本地分支合并
+git push origin [branch]    # 将本地分支推送到远程仓库
+```
+
+### 6. 查看历史与差异
+```bash
+git log                     # 查看提交历史
+git log --oneline           # 以简短的一行显示历史
+git diff                    # 显示工作区和暂存区的差异
+git show [commit]           # 显示某次提交的具体内容
+```
+
+### 7. 撤销与回退（救命用）
+```bash
+git checkout -- [file]      # 撤销工作区某个文件的修改（回到最近一次 commit/add 状态）
+git reset --hard HEAD       # 放弃本地所有修改，回退到上一个版本
+git reset --hard [commit]   # 回退到指定的某个版本（慎用，会删掉之后的修改）
+git revert [commit]         # 新建一个提交，用来撤销指定的提交
+```
+
+### 8. 临时存放（暂存）
+当你正在写代码，突然要去修另一个紧急 Bug，但当前的活还没干完不想 commit 时：
+```bash
+git stash                   # 把当前没完成的工作暂时“藏”起来
+git stash pop               # 忙完了，把“藏”起来的代码恢复回来
+```
+
+### 核心口诀（新手必背）：
+1. **改完代码**：`git status`（看一眼）
+2. **准备提交**：`git add .`
+3. **正式保存**：`git commit -m "说明"`
+4. **同步到云端**：`git push`
+
+如果你是初学者，建议配合 **VS Code** 等编辑器的 Git 图形界面插件使用，等熟悉了逻辑再完全脱离命令行。
