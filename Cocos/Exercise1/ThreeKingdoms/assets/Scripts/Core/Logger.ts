@@ -19,6 +19,10 @@ export class Logger{
         if(this.level <= LogLevel.DEBUG) console.log(this.format(tag, msg));
     }
 
+    public static w(tag: string, msg: string){
+        if(this.level <= LogLevel.WARN) console.warn(this.format(tag, msg));
+    }
+
     public static e(tag: string, msg: string){
         if(this.level <= LogLevel.ERROR) console.error(this.format(tag, msg));
     }
