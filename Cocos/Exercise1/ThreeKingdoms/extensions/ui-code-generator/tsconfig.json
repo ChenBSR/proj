@@ -1,0 +1,16 @@
+{
+    "extends": "./base.tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": "./source",
+        "types": ["node"],
+        "paths": {
+            "cc": ["./libs/cc.d.ts"]
+        },
+    },
+    "include": [
+        "source/*",
+        "./libs/cc.d.ts",
+        "./libs/editor.d.ts"
+    ]
+}

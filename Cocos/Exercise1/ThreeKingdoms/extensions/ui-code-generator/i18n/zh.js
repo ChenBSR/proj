@@ -1,0 +1,1 @@
+"use strict";module.exports={description:"UI自动生成工具",show_log:"输出日志"};

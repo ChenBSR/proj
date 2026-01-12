@@ -1,0 +1,52 @@
+{
+    "$schema": "./@types/schema/package/index.json",
+    "package_version": 2,
+    "name": "ui-code-generator",
+    "version": "1.0.0",
+    "author": "ChenBSR",
+    "editor": ">=3.8.8",
+    "scripts": {
+        "preinstall": "node ./scripts/preinstall.js",
+        "build": "tsc",
+        "watch": "tsc -w"
+    },
+    "description": "i18n:ui-code-generator.description",
+    "main": "./dist/main.js",
+    "devDependencies": {
+        "@types/node": "^18.19.130",
+        "typescript": "^5.8.2"
+    },
+    "contributions": {
+        "name": "ui-code-generator",
+        "main": "./dist/main.js",
+        "menu": [
+            {
+                "path": "i18n:ui-code-generator",
+                "label": "generate-ui-code",
+                "message": "generate-ui-code"
+            },
+            {
+                "path": "i18n:ui-code-generator",
+                "label": "i18n:ui-code-gen.show_log",
+                "message": "show-log"
+            }
+        ],
+        "messages": {
+            "generate-ui-code": {
+                "methods": [
+                    "onGenerateCode"
+                ]
+            },
+            "show-log": {
+                "methods": [
+                    "showLog"
+                ]
+            }
+        },
+        "scene": {
+            "script": "./dist/scene.js"
+        }
+    },
+    "keywords": [],
+    "license": "ISC"
+}
